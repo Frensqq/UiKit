@@ -24,6 +24,7 @@ import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
 import com.example.uikit.bubble.buttonBack
 import com.example.uikit.components.SpacerH
+import com.example.uikit.components.SpacerW
 
 @Composable
 fun headerCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
@@ -48,8 +49,35 @@ fun headerCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
     }
 }
 
+@Composable
+fun smallHeaderCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
+
+
+
+        Row(modifier = Modifier.fillMaxWidth().height(48.dp).padding(start = 20.dp, end= 26.dp), horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.Top) {
+
+            buttonBack {  }
+
+            Text("Корзина", style = Typography().Title1_ExtraBold, color = Black,
+                modifier = Modifier.clickable{onClickTrash}.padding(top = 2.dp))
+
+            Icon(
+                painter = painterResource(R.drawable.icon_delete),
+                contentDescription = null, tint =Placeholders,
+                modifier = Modifier.padding(top = 6.dp).size(20.dp)
+            )
+
+        }
+
+
+}
+
 @Preview
 @Composable
 fun PreviewheaderCart(){
-    headerCart({},{})
+    Column {
+        headerCart({}, {})
+        smallHeaderCart({}, {})
+    }
 }

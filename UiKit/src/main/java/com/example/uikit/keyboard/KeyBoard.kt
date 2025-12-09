@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
@@ -39,7 +41,7 @@ fun keyBoard(onPin: (List<Int>) -> Unit = {}){
     var pinArray by remember { mutableStateOf(mutableListOf<Int>()) }
 
 
-    Column(modifier = Modifier.fillMaxSize().padding(start = 43.dp, end = 44.dp)) {
+    Column(modifier = Modifier.padding(start = 43.dp, end = 44.dp)) {
 
             LazyVerticalStaggeredGrid(
                 columns = StaggeredGridCells.Fixed(3),
@@ -49,22 +51,24 @@ fun keyBoard(onPin: (List<Int>) -> Unit = {}){
             ) {
                 items(9) { index ->
 
-                    circleButton(index+1, {
-                        currentNumber ->
+                    Box(modifier = Modifier.size(80.dp)) {
 
-                        if (digitNumber< 4) {
-                            pinArray.add(currentNumber)
-                            digitNumber += 1
-                            onPin(pinArray)
+                        circleButton(index + 1, { currentNumber ->
 
-                        }
-                        else{
-                            pinArray.clear()
-                            pinArray.add(currentNumber)
-                            digitNumber = 1
-                            onPin(pinArray)
-                        }
-                    })
+                            if (digitNumber < 4) {
+                                pinArray.add(currentNumber)
+                                digitNumber += 1
+                                onPin(pinArray)
+
+                            } else {
+                                pinArray.clear()
+                                pinArray.add(currentNumber)
+                                digitNumber = 1
+                                onPin(pinArray)
+                            }
+                        })
+
+                    }
                 }
 
             }
@@ -119,12 +123,14 @@ fun PreviewkeyBoard(){
 
     var pinArray by remember { mutableStateOf(mutableListOf<Int>()) }
 
-    Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
+    Column(modifier = Modifier.fillMaxSize()) {
 
-        Text(pinArray.toString())
+
 
         keyBoard({currentPinArray ->
             pinArray = currentPinArray.toMutableList()
         })
+
+        Text(pinArray.toString(), color = White)
     }
 }

@@ -53,6 +53,7 @@ fun textInputField(value: String, TypePassword: Boolean, isError:Boolean, placeh
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(10.dp),
         trailingIcon = {if (TypePassword){
+            if (value.isNotEmpty()){
             Icon(
                 painter = painterResource(
                     if (hidingPass) R.drawable.clouse_eyes
@@ -61,7 +62,7 @@ fun textInputField(value: String, TypePassword: Boolean, isError:Boolean, placeh
                 tint = Black,
                 modifier = Modifier.clickable {
                     hidingPass=!hidingPass}
-            )}},
+            )}}},
         textStyle = Typography().Text_Regular,
 
         visualTransformation = if (TypePassword and hidingPass) PasswordVisualTransformation() else VisualTransformation.None,
@@ -92,7 +93,7 @@ fun PrewietextInputField(){
 
     Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
 
-        textInputField(value, false, false, "Введите текст", {CurrValue ->
+        textInputField(value, true, false, "Введите текст", {CurrValue ->
             value = CurrValue
         })
     }

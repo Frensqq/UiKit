@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.uikit.UI.Accent
 
 @Composable
 fun modalBackground(height: Int){
@@ -25,7 +25,7 @@ fun modalBackground(height: Int){
                     0))
                 .fillMaxWidth()
                 .height(height.dp)
-                .background(Accent)
+                .background(Color.White)
         ) {}
     }
 }

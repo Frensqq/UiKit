@@ -84,7 +84,8 @@ fun preview(){
 
         val ListCateg: List<String> = listOf("Популярные","Женщинам","Мужчинам","Детям","Аксессуары")
         var currentCategory by remember { mutableStateOf(ListCateg[0]) }
-        categoryMenu(ListCateg, currentCategory,
+        categoryMenu(ListCateg,
+            currentCategory,
             onClick = { currCateg ->
                 currentCategory = currCateg
             })
@@ -102,7 +103,8 @@ fun preview(){
         var value by remember { mutableStateOf("") }
         Box(modifier = Modifier.fillMaxSize()) {
 
-            genderSelect(value, { currentValue -> value = currentValue })
+            genderSelect(value,
+                { currentValue -> value = currentValue })
         }
 
         SpacerH(25)
@@ -110,7 +112,8 @@ fun preview(){
         var valueCat by remember { mutableStateOf("") }
         Box(modifier = Modifier.fillMaxSize()) {
 
-            select(valueCat, "Категория", list,{ currentValue -> valueCat = currentValue })
+            select(valueCat, "Категория",
+                list,{ currentValue -> valueCat = currentValue })
         }
 
         SpacerH(25)
@@ -119,17 +122,23 @@ fun preview(){
         SpacerH(25)
         var valueStr1 by remember { mutableStateOf("") }
 
-        inputAndTitle("Имя", valueStr1,false,false, "Введите имя", {currValue ->
+        inputAndTitle("Имя", valueStr1,
+            false,false,
+            "Введите имя", {currValue ->
             valueStr1 = currValue})
 
         SpacerH(25)
         var valueStr2 by remember { mutableStateOf("") }
-        inputAndTitle("Пароль", valueStr2,true,false, "Введите имя", {currValue ->
+        inputAndTitle("Пароль", valueStr2,
+            true,false,
+            "Введите пароль", {currValue ->
             valueStr2 = currValue})
 
         SpacerH(25)
         var valueStr3 by remember { mutableStateOf("") }
-        inputAndTitle("Ошибка", valueStr3,false,true, "Введите имя", {currValue ->
+        inputAndTitle("Ошибка", valueStr3,
+            false,true,
+            "Введите имя", {currValue ->
             valueStr3 = currValue})
 
         SpacerH(25)
@@ -137,16 +146,21 @@ fun preview(){
 
         SpacerH(25)
         var statetoggle by remember { mutableStateOf(false) }
-        toggle(statetoggle, {statetoggle = !statetoggle })
+        toggle(statetoggle,
+            {statetoggle = !statetoggle })
 
         SpacerH(25)
-        primaryCard("Рубашка Воскресенье для машинного вязания", "Мужская одежда",300,true,{})
+        primaryCard("Рубашка Воскресенье для машинного вязания",
+            "Мужская одежда",300,true,
+            {})
 
         SpacerH(25)
-        projectCard("Мой первый проект", "2",{})
+        projectCard("Мой первый проект", "2",
+            {})
 
         SpacerH(25)
-        Cart("Рубашка воскресенье для машинного вязания", 300, 10, {})
+        Cart("Рубашка воскресенье для машинного вязания",
+            300, 10, {})
 
         SpacerH(25)
         headerCart({},{})
