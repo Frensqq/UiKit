@@ -39,7 +39,10 @@ data class Item(
 
 @Composable
 fun Tabbar(selectedCategory:String,
-           onClick: (String) -> Unit){
+           onClick1: () -> Unit,
+           onClick2: () -> Unit,
+           onClick3: () -> Unit,
+           onClick4: () -> Unit){
     val Items = listOf(
         Item(R.drawable.home, "Главная"),
         Item(R.drawable.catalog, "Каталог"),
@@ -62,23 +65,70 @@ fun Tabbar(selectedCategory:String,
                 .padding(start = 7.dp, top = 8.dp, end = 7.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Items.forEach { item ->
+
 
                 Column(modifier = Modifier.width(76.dp).height(49.dp).
-                    clickable{onClick(item.title)},
+                    clickable{onClick1()},
                     horizontalAlignment = Alignment.CenterHorizontally) {
 
-                    Icon(painter = painterResource(item.iconId),
+                    Icon(painter = painterResource(Items[0].iconId),
                         contentDescription = null,
                         modifier = Modifier.size(32.dp),
-                        tint =  if (selectedCategory == item.title) Accent else Placeholders
+                        tint =  if (selectedCategory == Items[0].title) Accent else Placeholders
                     )
 
-                    Text(item.title,
+                    Text( Items[0].title,
                         style = Typography().Caption2_Regular,
-                        color = if (selectedCategory == item.title) Accent else Placeholders
+                        color = if (selectedCategory ==  Items[0].title) Accent else Placeholders
                     )
                 }
+
+            Column(modifier = Modifier.width(76.dp).height(49.dp).
+            clickable{onClick2()},
+                horizontalAlignment = Alignment.CenterHorizontally) {
+
+                Icon(painter = painterResource(Items[1].iconId),
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+                    tint =  if (selectedCategory == Items[1].title) Accent else Placeholders
+                )
+
+                Text( Items[1].title,
+                    style = Typography().Caption2_Regular,
+                    color = if (selectedCategory ==  Items[1].title) Accent else Placeholders
+                )
+            }
+
+            Column(modifier = Modifier.width(76.dp).height(49.dp).
+            clickable{onClick3()},
+                horizontalAlignment = Alignment.CenterHorizontally) {
+
+                Icon(painter = painterResource(Items[2].iconId),
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+                    tint =  if (selectedCategory == Items[2].title) Accent else Placeholders
+                )
+
+                Text( Items[2].title,
+                    style = Typography().Caption2_Regular,
+                    color = if (selectedCategory ==  Items[2].title) Accent else Placeholders
+                )
+            }
+
+            Column(modifier = Modifier.width(76.dp).height(49.dp).
+            clickable{onClick4()},
+                horizontalAlignment = Alignment.CenterHorizontally) {
+
+                Icon(painter = painterResource(Items[3].iconId),
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+                    tint =  if (selectedCategory == Items[3].title) Accent else Placeholders
+                )
+
+                Text( Items[3].title,
+                    style = Typography().Caption2_Regular,
+                    color = if (selectedCategory ==  Items[3].title) Accent else Placeholders
+                )
             }
         }
     }
@@ -91,13 +141,14 @@ fun TabbarPreview_Interactive() {
 
 
 
-    Box(modifier = Modifier.height(250.dp).background(Color.White), contentAlignment = Alignment.BottomCenter) {
-        Tabbar(
-            selectedCategory = selectedCategory,
-            onClick = { category ->
-                selectedCategory = category
-            }
-        )
-    }
+//    Box(modifier = Modifier.height(250.dp).background(Color.White), contentAlignment = Alignment.BottomCenter) {
+//        Tabbar(
+//            selectedCategory = selectedCategory,
+//            onClickString = { category ->
+//                selectedCategory = category
+//            },
+//            onClick = {}
+//        )
+//    }
 
 }

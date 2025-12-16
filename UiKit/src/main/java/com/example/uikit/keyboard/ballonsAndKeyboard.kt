@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
@@ -22,9 +23,9 @@ fun ballonsAndKeyboard(onPin: (List<Int>) -> Unit = {}){
 
     var pinArray by remember { mutableStateOf(mutableListOf<Int>()) }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column() {
 
-        LazyRow(modifier = Modifier.fillMaxWidth(),
+        LazyRow(modifier = Modifier.fillMaxWidth().height(16.dp),
             horizontalArrangement = Arrangement.Center)
         {items(4) {item ->
 

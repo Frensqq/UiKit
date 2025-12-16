@@ -27,7 +27,7 @@ import com.example.uikit.buttons.bigButton
 import com.example.uikit.buttons.cartButton
 import com.example.uikit.buttons.chips
 import com.example.uikit.buttons.smallButton
-import com.example.uikit.cards.Cart
+import com.example.uikit.cards.cardCart
 import com.example.uikit.cards.primaryCard
 import com.example.uikit.cards.projectCard
 import com.example.uikit.components.SpacerH
@@ -86,17 +86,18 @@ fun preview(){
         var currentCategory by remember { mutableStateOf(ListCateg[0]) }
         categoryMenu(ListCateg,
             currentCategory,
-            onClick = { currCateg ->
+            onClickString = { currCateg ->
                 currentCategory = currCateg
-            })
+            },{})
 
         SpacerH(25)
         var selectedCategory by remember { mutableStateOf("Главная") }
         Tabbar(
             selectedCategory = selectedCategory,
-            onClick = { category ->
-                selectedCategory = category
-            }
+            {},
+            {},
+            {},
+            {}
         )
 
         SpacerH(25)
@@ -117,7 +118,7 @@ fun preview(){
         }
 
         SpacerH(25)
-        searchField {  }
+        searchField({}) {  }
 
         SpacerH(25)
         var valueStr1 by remember { mutableStateOf("") }
@@ -159,14 +160,14 @@ fun preview(){
             {})
 
         SpacerH(25)
-        Cart("Рубашка воскресенье для машинного вязания",
-            300, 10, {})
+        cardCart("Рубашка воскресенье для машинного вязания",
+            300, 10, {}, {})
 
         SpacerH(25)
         headerCart({},{})
 
         SpacerH(25)
-        headerCatalog({},{})
+        headerCatalog({},{},{})
 
         SpacerH(25)
         modal(100,"Рубашка Воскресенье для машинного вязания") { }

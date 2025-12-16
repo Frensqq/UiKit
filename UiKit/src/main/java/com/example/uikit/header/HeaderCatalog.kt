@@ -23,7 +23,7 @@ import com.example.uikit.components.SpacerW
 import com.example.uikit.search.searchField
 
 @Composable
-fun headerCatalog(onSearchHeader:(String)->Unit, onClickProfile: () -> Unit){
+fun headerCatalog(onSearchHeader:(String)->Unit,onDone:() -> Unit, onClickProfile: () -> Unit){
 
     var value by remember { mutableStateOf("") }
 
@@ -37,14 +37,15 @@ fun headerCatalog(onSearchHeader:(String)->Unit, onClickProfile: () -> Unit){
                     value = currentValue
 
                     onSearchHeader(value)
-                }
+                },
+                onDone
             )
         }
 
         Icon(
             painter = painterResource(R.drawable.user_icon),
             contentDescription = null,
-            modifier = Modifier.size(32.dp).clickable{onClickProfile},
+            modifier = Modifier.size(32.dp).clickable{onClickProfile()},
             tint = Black
         )
 
@@ -55,5 +56,5 @@ fun headerCatalog(onSearchHeader:(String)->Unit, onClickProfile: () -> Unit){
 @Composable
 fun PreviewheaderCatalog(){
 
-    headerCatalog({},{})
+    headerCatalog({},{}, {})
 }

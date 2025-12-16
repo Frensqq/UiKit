@@ -32,7 +32,7 @@ fun PreviewinputAndTitle(){
 
     var value by remember { mutableStateOf("") }
 
-    inputAndTitle("Имя", value,false,false, "Введите имя", {currValue ->
+    inputAndTitle("Имя", value,true,false, "Введите имя", {currValue ->
         value = currValue})
 
 }

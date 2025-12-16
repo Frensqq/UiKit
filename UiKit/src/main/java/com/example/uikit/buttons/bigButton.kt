@@ -31,7 +31,7 @@ fun bigButton( text:String, enabled: Boolean, onClick: () -> Unit){
         )
     ){
         Text(text = text,
-            style = Typography().Title1_SemiBold,
+            style = Typography().Title3_Semibold,
             color = White)
     }
 }

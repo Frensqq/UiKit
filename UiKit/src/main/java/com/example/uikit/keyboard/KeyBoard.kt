@@ -41,7 +41,7 @@ fun keyBoard(onPin: (List<Int>) -> Unit = {}){
     var pinArray by remember { mutableStateOf(mutableListOf<Int>()) }
 
 
-    Column(modifier = Modifier.padding(start = 43.dp, end = 44.dp)) {
+    Column(modifier = Modifier.padding(start = 43.dp, end = 44.dp).height(392.dp)) {
 
             LazyVerticalStaggeredGrid(
                 columns = StaggeredGridCells.Fixed(3),

@@ -15,7 +15,9 @@ import com.example.uikit.buttons.chips
 @Composable
 fun categoryMenu(categories: List<String>,
                  selectedCategory:String? = categories[0],
-                 onClick: (String) -> Unit
+                 onClickString:  (String) -> Unit,
+                 onClick: () -> Unit
+
 ){
 
     LazyRow(
@@ -28,7 +30,8 @@ fun categoryMenu(categories: List<String>,
                 category,
                 selectedCategory == category,
                 onClick = {
-                    onClick(category)
+                    onClickString(category)
+                    onClick()
                 }
             )
         }
@@ -44,7 +47,8 @@ fun PreviewcategoryMenu(){
     var currentCategory by remember { mutableStateOf(ListCateg[0]) }
 
     categoryMenu(ListCateg, currentCategory,
-        onClick = { currCateg ->
+        onClickString = { currCateg ->
             currentCategory = currCateg
-        })
+        },{}
+        )
 }

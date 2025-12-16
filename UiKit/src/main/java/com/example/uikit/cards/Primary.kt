@@ -30,8 +30,7 @@ fun primaryCard(TitleName: String, typeText: String,cost:Int, state: Boolean, on
     Box() {
         backgroundCards()
 
-        var State by remember { mutableStateOf(state) }
-        var text = if (State) "Добавить" else "Убрать"
+        var text = if (state) "Добавить" else "Убрать"
 
         Column(modifier = Modifier.height(138.dp).padding(16.dp)) {
             Text(TitleName, style = Typography().Headline_Medium, color = Black,)
@@ -58,9 +57,8 @@ fun primaryCard(TitleName: String, typeText: String,cost:Int, state: Boolean, on
                     Text("$cost ₽", style = Typography().Title3_Semibold, color = Black)
 
                 }
-                smallButton(State = State, text, {
-                    onClick
-                    State = !State
+                smallButton(State = state, text, {
+                    onClick()
                 })
             }
 

@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -19,6 +21,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.uikit.R
@@ -30,7 +34,7 @@ import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
 
 @Composable
-fun searchField(onSearch:(String)->Unit){
+fun searchField(onSearch:(String)->Unit, onDone:() -> Unit){
 
     var searchText by remember { mutableStateOf("") }
     var isFocused by remember { mutableStateOf(false) }
@@ -56,6 +60,11 @@ fun searchField(onSearch:(String)->Unit){
             unfocusedTextColor = Black,
             unfocusedContainerColor = InputBg,
             disabledContainerColor = InputBg,
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,imeAction = ImeAction.Done),
+        keyboardActions = KeyboardActions(onDone = {
+            onDone()
+        }
         ),
         trailingIcon = {
             if (isFocused || searchText.isNotEmpty()) {
@@ -90,5 +99,5 @@ fun searchField(onSearch:(String)->Unit){
 @Composable
 fun PrewiewSearchField(){
 
-    searchField(onSearch = ({}))
+    searchField(onSearch = ({}), {})
 }

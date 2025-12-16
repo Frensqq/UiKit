@@ -1,5 +1,6 @@
 package com.example.uikit.cards
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,8 +29,8 @@ import com.example.uikit.components.SpacerW
 import com.example.uikit.controls.counter
 
 @Composable
-fun Cart(titleText: String, cost:Int, countStart:Int,
-         onCountChange: (Int) -> Unit ){
+fun cardCart(titleText: String, cost:Int, countStart:Int,
+         onCountChange: (Int) -> Unit, onClickIcon: () -> Unit ){
     Box() {
 
     backgroundCards()
@@ -57,8 +58,11 @@ fun Cart(titleText: String, cost:Int, countStart:Int,
 
                 Icon(
                     painter = painterResource(R.drawable.close),
-                    contentDescription = null, Modifier.size(20.dp),
-                    tint = Description
+                    contentDescription = null, Modifier.size(20.dp).clickable{
+                        onClickIcon()
+                    },
+                    tint = Description,
+
                 )
 
             }
@@ -97,5 +101,5 @@ fun Cart(titleText: String, cost:Int, countStart:Int,
 @Preview
 @Composable
 fun PreviewCart(){
-    Cart("Рубашка воскресенье для машинного вязания", 300, 10, {})
+    cardCart("Рубашка воскресенье для машинного вязания", 300, 10, {}, {})
 }

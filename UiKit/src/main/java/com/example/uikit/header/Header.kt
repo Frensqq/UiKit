@@ -33,19 +33,20 @@ fun headerCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
 
         Row(modifier = Modifier.padding(end = 11.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
 
-            buttonBack {  }
+            buttonBack {
+                onClickbuttonBack()
+            }
 
             Icon(
                 painter = painterResource(R.drawable.icon_delete),
                 contentDescription = null, tint =Placeholders,
-                modifier = Modifier.size(20.dp)
+                modifier = Modifier.size(20.dp).clickable{onClickTrash()}
             )
         }
 
         SpacerH(24)
 
-        Text("Корзина", style = Typography().Title1_ExtraBold, color = Black,
-            modifier = Modifier.clickable{onClickTrash})
+        Text("Корзина", style = Typography().Title1_ExtraBold, color = Black)
     }
 }
 
@@ -57,7 +58,10 @@ fun smallHeaderCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
         Row(modifier = Modifier.fillMaxWidth().height(48.dp).padding(start = 20.dp, end= 26.dp), horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.Top) {
 
-            buttonBack {  }
+            buttonBack {
+
+                onClickbuttonBack()
+            }
 
             Text("Корзина", style = Typography().Title1_ExtraBold, color = Black,
                 modifier = Modifier.clickable{onClickTrash}.padding(top = 2.dp))

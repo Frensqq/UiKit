@@ -21,7 +21,7 @@ import com.example.uikit.UI.InputBg
 @Composable
 fun buttonBack(onClick: () -> Unit){
     Box(modifier = Modifier.size(32.dp)
-        .clip(RoundedCornerShape(8.dp)).clickable(onClick = {onClick})
+        .clip(RoundedCornerShape(8.dp)).clickable(onClick = {onClick()})
         .background(InputBg), contentAlignment = Alignment.Center) {
 
         Icon(
