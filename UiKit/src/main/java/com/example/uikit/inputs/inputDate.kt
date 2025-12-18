@@ -40,8 +40,9 @@ import java.util.Locale
 fun Date(placeholder: String, value:String, onchange:(String)->Unit) {
     var openDialog by remember { mutableStateOf(false) }
 
-    // ИЗМЕНЕНИЕ 1: Ваш формат даты
-    val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'", Locale.US)
+    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+
+    //"yyyy-MM-dd HH:mm:ss.SSS'Z'"
 
     TextField(
         readOnly = true,
@@ -84,7 +85,6 @@ fun Date(placeholder: String, value:String, onchange:(String)->Unit) {
             confirmButton = {
                 TextButton(onClick = {
                     datePickerState.selectedDateMillis?.let { mills->
-                        // ИЗМЕНЕНИЕ 2: Просто форматируем дату
                         val dateString = formatter.format(Date(mills))
                         onchange(dateString)
                     }
