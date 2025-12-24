@@ -26,17 +26,16 @@ import com.example.uikit.components.SpacerW
 import com.example.uikit.components.circleClose
 
 @Composable
-fun modal(height:Int, text: String,Close: () -> Unit){
+fun modal( text: String,onClose: () -> Unit){
 
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
+    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.BottomCenter) {
         Box(
             modifier = Modifier
-                .clip(RoundedCornerShape(8,
-                    8,
+                .clip(RoundedCornerShape(24,
+                    24,
                     0,
                     0))
                 .fillMaxWidth()
-                .height(height.dp)
                 .background(Color.White)
         ) {
             Text(
@@ -45,7 +44,7 @@ fun modal(height:Int, text: String,Close: () -> Unit){
                 modifier = Modifier.padding(top = 24.dp, start = 20.dp, end = 40.dp)
             )
             Box(modifier = Modifier.align(Alignment.TopEnd).padding(end = 20.dp, top = 24.dp)) {
-                circleClose(InputStr,Close)
+                circleClose(InputStr, onClick = onClose)
             }
         }
     }
@@ -55,6 +54,6 @@ fun modal(height:Int, text: String,Close: () -> Unit){
 @Composable
 fun Previewmodal(){
 
-    modal(150,"Рубашка Воскресенье для машинного вязания", {})
+    modal("Рубашка Воскресенье для машинного вязания", {})
 
 }

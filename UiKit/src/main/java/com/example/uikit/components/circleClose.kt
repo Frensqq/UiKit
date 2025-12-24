@@ -23,7 +23,7 @@ fun circleClose(colorBack: Color, onClick: () -> Unit){
 
     Box(modifier = Modifier.size(24.dp)
         .clip(CircleShape).background(colorBack)
-        .clickable{onClick},
+        .clickable{onClick()},
         contentAlignment = Alignment.Center)
     {
 
