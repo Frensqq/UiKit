@@ -29,7 +29,7 @@ import com.example.uikit.components.SpacerW
 @Composable
 fun headerCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
 
-    Column(modifier = Modifier.fillMaxWidth().height(84.dp).background(Color.White)) {
+    Column(modifier = Modifier.fillMaxWidth().height(84.dp)) {
 
         Row(modifier = Modifier.padding(end = 11.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
 

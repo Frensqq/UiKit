@@ -112,5 +112,3 @@ fun CurrentDateTime(): Array<Int>{
 fun PreviewProject(){
     projectCard("Мой первый проект", "2",{})
 }
-
-
