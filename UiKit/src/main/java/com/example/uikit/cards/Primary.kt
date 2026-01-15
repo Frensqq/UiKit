@@ -1,10 +1,12 @@
 package com.example.uikit.cards
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -16,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.uikit.UI.Black
@@ -69,5 +72,12 @@ fun primaryCard(TitleName: String, typeText: String,cost:Int, state: Boolean, on
 @Preview
 @Composable
 fun PreviewprimaryCard(){
-    primaryCard("Рубашка Воскресенье для машинного вязания", "Мужская одежда",300,true,{})
+
+    Column(modifier = Modifier.fillMaxSize(). background(color = Color.White).padding(horizontal = 20.dp, vertical = 50.dp)) {
+        primaryCard("Рубашка Воскресенье для машинного вязания", "Мужская одежда", 300, true, {})
+
+        primaryCard("Рубашка Воскресенье для машинного вязания", "Мужская одежда", 300, true, {})
+
+        primaryCard("Рубашка Воскресенье для машинного вязания", "Мужская одежда", 300, true, {})
+    }
 }
