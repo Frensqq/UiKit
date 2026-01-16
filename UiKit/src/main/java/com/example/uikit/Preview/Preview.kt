@@ -26,7 +26,6 @@ import com.example.uikit.cards.cardCart
 import com.example.uikit.cards.primaryCard
 import com.example.uikit.cards.projectCard
 import com.example.uikit.components.SpacerH
-import com.example.uikit.components.Tabbar
 import com.example.uikit.components.authorizationTitle
 import com.example.uikit.components.categoryMenu
 import com.example.uikit.controls.counter
@@ -83,13 +82,7 @@ fun preview(){
 
         SpacerH(25)
         var selectedCategory by remember { mutableStateOf("Главная") }
-        Tabbar(
-            selectedCategory = selectedCategory,
-            {},
-            {},
-            {},
-            {}
-        )
+
 
         SpacerH(25)
         var value by remember { mutableStateOf("") }

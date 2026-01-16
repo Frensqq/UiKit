@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -32,123 +34,59 @@ import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
 import com.example.uikit.UI.White
 
-data class Item(
+data class TabItem(
     val iconId: Int,
     val title: String
 )
 
 @Composable
-fun Tabbar(selectedCategory:String,
-           onClick1: () -> Unit,
-           onClick2: () -> Unit,
-           onClick3: () -> Unit,
-           onClick4: () -> Unit){
-    val Items = listOf(
-        Item(R.drawable.home, "Главная"),
-        Item(R.drawable.catalog, "Каталог"),
-        Item(R.drawable.project, "Проекты"),
-        Item(R.drawable.profile, "Профиль")
-    )
-
-    Box(modifier = Modifier.fillMaxWidth().height(88.dp)
-        .background(White) .shadow(
-            elevation = 1.dp,
-            shape = RectangleShape,
-            clip = false,
-            ambientColor = Color(0xffB8C1CC),
-            spotColor = Color(0xffB8C1CC)
-        ))
-    {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 7.dp, top = 8.dp, end = 7.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-
-
-                Column(modifier = Modifier.width(76.dp).height(49.dp).
-                    clickable{onClick1()},
-                    horizontalAlignment = Alignment.CenterHorizontally) {
-
-                    Icon(painter = painterResource(Items[0].iconId),
-                        contentDescription = null,
-                        modifier = Modifier.size(32.dp),
-                        tint =  if (selectedCategory == Items[0].title) Accent else Placeholders
-                    )
-
-                    Text( Items[0].title,
-                        style = Typography().Caption2_Regular,
-                        color = if (selectedCategory ==  Items[0].title) Accent else Placeholders
-                    )
-                }
-
-            Column(modifier = Modifier.width(76.dp).height(49.dp).
-            clickable{onClick2()},
-                horizontalAlignment = Alignment.CenterHorizontally) {
-
-                Icon(painter = painterResource(Items[1].iconId),
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp),
-                    tint =  if (selectedCategory == Items[1].title) Accent else Placeholders
-                )
-
-                Text( Items[1].title,
-                    style = Typography().Caption2_Regular,
-                    color = if (selectedCategory ==  Items[1].title) Accent else Placeholders
-                )
-            }
-
-            Column(modifier = Modifier.width(76.dp).height(49.dp).
-            clickable{onClick3()},
-                horizontalAlignment = Alignment.CenterHorizontally) {
-
-                Icon(painter = painterResource(Items[2].iconId),
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp),
-                    tint =  if (selectedCategory == Items[2].title) Accent else Placeholders
-                )
-
-                Text( Items[2].title,
-                    style = Typography().Caption2_Regular,
-                    color = if (selectedCategory ==  Items[2].title) Accent else Placeholders
-                )
-            }
-
-            Column(modifier = Modifier.width(76.dp).height(49.dp).
-            clickable{onClick4()},
-                horizontalAlignment = Alignment.CenterHorizontally) {
-
-                Icon(painter = painterResource(Items[3].iconId),
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp),
-                    tint =  if (selectedCategory == Items[3].title) Accent else Placeholders
-                )
-
-                Text( Items[3].title,
-                    style = Typography().Caption2_Regular,
-                    color = if (selectedCategory ==  Items[3].title) Accent else Placeholders
-                )
+fun TabBar(
+    selectedTab: String,
+    onTabSelected: (String) -> Unit,
+    tabs: List<TabItem> = defaultTabs()
+) {
+    Box(Modifier.fillMaxWidth().height(88.dp)) {
+        Row(Modifier.fillMaxWidth().padding(horizontal = 7.dp, vertical = 8.dp),
+            Arrangement.SpaceBetween) {
+            tabs.forEach { tab ->
+                TabItemView(tab, selectedTab == tab.title) { onTabSelected(tab.title) }
             }
         }
     }
 }
 
-@Preview()
 @Composable
-fun TabbarPreview_Interactive() {
-    var selectedCategory by remember { mutableStateOf("Главная") }
+private fun TabItemView(tab: TabItem, isSelected: Boolean, onClick: () -> Unit) {
+    Column(
+        Modifier.size(76.dp, 49.dp).clickable{onClick()},
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Icon(painterResource(tab.iconId), null, Modifier.size(32.dp),
+            tint = if (isSelected) Accent else Placeholders)
+        Text(tab.title, style = Typography().Caption2_Regular,
+            color = if (isSelected) Accent else Placeholders)
+    }
+}
+
+private fun defaultTabs() = listOf(
+    TabItem(R.drawable.home, "Главная"),
+    TabItem(R.drawable.catalog, "Каталог"),
+    TabItem(R.drawable.project, "Проекты"),
+    TabItem(R.drawable.profile, "Профиль")
+)
+
+@Preview
+@Composable
+fun TabBarPreviewInteractive() {
+    var selectedTab by remember { mutableStateOf("Главная") }
 
 
-
-//    Box(modifier = Modifier.height(250.dp).background(Color.White), contentAlignment = Alignment.BottomCenter) {
-//        Tabbar(
-//            selectedCategory = selectedCategory,
-//            onClickString = { category ->
-//                selectedCategory = category
-//            },
-//            onClick = {}
-//        )
-//    }
+    Column(Modifier.fillMaxSize()) {
+            Spacer(Modifier.weight(1f))
+        TabBar(
+            selectedTab = selectedTab,
+            onTabSelected = { tab -> selectedTab = tab }
+        )
+        }
 
 }
