@@ -40,7 +40,7 @@ fun modal( text: String,onClose: () -> Unit){
         ) {
             Text(
                 text,
-                style = Typography().Title2_SemiBold,
+                style = Typography().Title2_ExtraBold,
                 modifier = Modifier.padding(top = 24.dp, start = 20.dp, end = 40.dp)
             )
             Box(modifier = Modifier.align(Alignment.TopEnd).padding(end = 20.dp, top = 24.dp)) {
