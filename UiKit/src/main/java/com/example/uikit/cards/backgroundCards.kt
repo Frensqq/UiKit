@@ -43,30 +43,6 @@ fun backgroundCards(){
                 shape = RoundedCornerShape(12.dp)
             )
     )
-
-
-
-
-//    Box(modifier = Modifier
-//        .fillMaxWidth()
-//        .height(138.dp)
-//        //.clip(RoundedCornerShape(12.dp))
-//        .dropShadow(shape = RoundedCornerShape(12.dp),
-//            shadow = Shadow(
-//                radius = 12.dp,
-//                spread = 6.dp,
-//                color = CardStr,
-//                offset = DpOffset(x = 4.dp, 4.dp)
-//            )
-//        ).background(color = White, RoundedCornerShape(12.dp))
-
-
-//            elevation = 1.dp, shape = RoundedCornerShape(12.dp),
-//            clip = true,
-//            spotColor = CardStr, ambientColor =  White)
-        //.border(1.dp, CardStr, shape = RoundedCornerShape(12.dp))
-
-
 }
 
 @Preview
