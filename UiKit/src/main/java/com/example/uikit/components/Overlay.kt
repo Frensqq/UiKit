@@ -1,6 +1,7 @@
 package com.example.uikit.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -10,8 +11,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.uikit.UI.Black
 
 @Composable
-fun overlay(){
-    Box(modifier = Modifier.fillMaxSize().background(Black.copy(alpha = 0.6f)))
+fun overlay(
+    OnClick: () -> Unit
+){
+    Box(modifier = Modifier.fillMaxSize().background(Black.copy(alpha = 0.6f)).clickable{OnClick()})
 }
 
 @Preview
@@ -19,6 +22,6 @@ fun overlay(){
 fun Previewoverlay(){
 
     Box(Modifier.fillMaxSize(0.5f).background(Color.White)) {
-        overlay()
+        overlay({})
     }
 }

@@ -24,21 +24,13 @@ import com.example.uikit.UI.White
 @Composable
 fun backgroundCards(){
 
-
     Box(
-        Modifier
-            .height(138.dp)
+        Modifier.height(138.dp)
             .fillMaxWidth()
             .dropShadow(
                 shape = RoundedCornerShape(12.dp),
-                shadow = Shadow(
-                    radius = 12.dp,
-                    spread = 1.dp,
-                    color = CardStr,
-                )
-            )
-
-            .background(
+                shadow = Shadow(radius = 12.dp, spread = 1.dp, color = CardStr,)
+            ).background(
                 color = Color.White,
                 shape = RoundedCornerShape(12.dp)
             )

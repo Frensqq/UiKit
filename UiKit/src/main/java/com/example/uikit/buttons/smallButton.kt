@@ -22,8 +22,6 @@ import com.example.uikit.UI.White
 @Composable
 fun smallButton(State:Boolean, text: String, onClick: () -> Unit) {
 
-
-
     Button(onClick = onClick,
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier.height(40.dp)

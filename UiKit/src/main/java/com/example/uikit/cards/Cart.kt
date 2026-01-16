@@ -49,13 +49,10 @@ fun cardCart(titleText: String, cost:Int, countStart:Int,
                 Modifier.fillMaxWidth().padding(16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-
                 Text(
                     titleText, style = Typography().Headline_Medium,
                     maxLines = 2, color = Black, modifier = Modifier.fillMaxWidth(0.9f)
                 )
-
-
                 Icon(
                     painter = painterResource(R.drawable.close),
                     contentDescription = null, Modifier.size(20.dp).clickable{
@@ -64,7 +61,6 @@ fun cardCart(titleText: String, cost:Int, countStart:Int,
                     tint = Description,
 
                 )
-
             }
 
             Row(

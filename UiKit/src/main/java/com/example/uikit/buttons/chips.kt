@@ -36,13 +36,8 @@ fun chips(maxwidth:Int,minwidth:Int, text: String, state: Boolean, onClick: () -
             disabledContentColor = Description
         ),
     ){
-
         Text(text = text, style = Typography().Text_Medium, color = if (state) White else Description)
-
     }
-
-
-
 }
 
 @Preview
