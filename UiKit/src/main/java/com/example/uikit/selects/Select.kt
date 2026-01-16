@@ -36,35 +36,24 @@ import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
 
 @Composable
-fun select(value: String, text: String, selectOptions:List<String>, oncheck:(String)->Unit){
+fun Select(
+    value: String,
+    placeholder: String,
+    options: List<String>,
+    onValueChange: (String) -> Unit,
+) {
+    var expanded by remember { mutableStateOf(true) }
 
-    var open by remember { mutableStateOf(false) }
-
-
-    ExposedDropdownMenuBox(
-        expanded = open,
-        onExpandedChange = {
-            open = !open
-        }
-    ) {
-
+    ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = it }) {
         TextField(
-            readOnly = true,
-            shape = RoundedCornerShape(10.dp),
             value = value,
-            onValueChange = { },
-            placeholder = {
-                Text(text = text,
-                    style = Typography().Headline_Regular,
-                    color = Placeholders) },
-            trailingIcon = {
-                Icon(
-                    painter = painterResource(R.drawable.chevrondown),
-                    modifier = Modifier.size(20.dp),
-                    contentDescription = null,
-                    tint = Description
-                )
-            },
+            shape = RoundedCornerShape(10.dp),
+            onValueChange = {},
+            readOnly = true,
+            placeholder = { Text(placeholder, style = Typography().Headline_Regular,
+                color = Placeholders) },
+            trailingIcon = { Icon(painterResource(R.drawable.chevrondown), null,
+                tint = Description) },
             colors = TextFieldDefaults.colors(
                 disabledIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
@@ -76,28 +65,20 @@ fun select(value: String, text: String, selectOptions:List<String>, oncheck:(Str
                 focusedContainerColor = InputBg,
                 unfocusedTextColor = Black,
                 unfocusedContainerColor = InputBg,
-                disabledContainerColor = InputBg,
-            ),
+                disabledContainerColor = InputBg),
             modifier = Modifier
                 .border(1.dp, InputBg, RoundedCornerShape(10.dp))
-                .menuAnchor()
                 .fillMaxWidth()
-                .height(50.dp),
+                .height(50.dp)
+                .menuAnchor(),
             textStyle = Typography().Headline_Regular
         )
 
-
-        ExposedDropdownMenu(
-            expanded = open,
-            onDismissRequest = { open = false }
-        ) {
-            selectOptions.forEach { gender ->
+        ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            options.forEach { option ->
                 DropdownMenuItem(
-                    text = { Text(gender, style = Typography().Headline_Regular, color = Black) },
-                    onClick = {
-                        oncheck(gender)
-                        open = false
-                    }
+                    text = { Text(option, style = Typography().Headline_Regular, color = Black) },
+                    onClick = { onValueChange(option); expanded = false }
                 )
             }
         }
@@ -114,7 +95,10 @@ fun PreviewSelect(){
 
     Box(modifier = Modifier.fillMaxSize()) {
 
-        select(value, "Категория", list,{ currentValue -> value = currentValue })
+        Select(value = value, placeholder = "Пол", options = listOf("Мужской", "Женский", "Другое"),
+            {Curr ->
+            value = Curr}
+        )
     }
 
 }
