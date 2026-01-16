@@ -29,145 +29,65 @@ data class Typo(
 
 @Composable
 fun Typography(): Typo{
-    return Typo(
-        Title1_SemiBold = TextStyle(
-            fontSize = 24.sp,
-            fontFamily = FontFamily(Font(R.font.semibold)),
-            lineHeight = 28.sp,
-            letterSpacing = 0.33.sp,
-            fontWeight = FontWeight(600),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Title1_ExtraBold = TextStyle(
-            fontSize = 24.sp,
-            fontFamily = FontFamily(Font(R.font.extrabold)),
-            lineHeight = 28.sp,
-            letterSpacing = 0.33.sp,
-            fontWeight = FontWeight(800),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Title2_Regular = TextStyle(
-            fontSize = 20.sp,
-            fontFamily = FontFamily(Font(R.font.regular)),
-            lineHeight = 28.sp,
-            letterSpacing = 0.38.sp,
-            fontWeight = FontWeight(400),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Title2_SemiBold = TextStyle(
-            fontSize = 20.sp,
-            fontFamily = FontFamily(Font(R.font.semibold)),
-            lineHeight = 28.sp,
-            letterSpacing = 0.38.sp,
-            fontWeight = FontWeight(600),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Title2_ExtraBold = TextStyle(
-            fontSize = 20.sp,
-            fontFamily = FontFamily(Font(R.font.extrabold)),
-            lineHeight = 28.sp,
-            letterSpacing = 0.38.sp,
-            fontWeight = FontWeight(800),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Title3_Regular = TextStyle(
-            fontSize = 17.sp,
-            fontFamily = FontFamily(Font(R.font.regular)),
-            lineHeight = 24.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(400),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Title3_Medium = TextStyle(
-            fontSize = 17.sp,
-            fontFamily = FontFamily(Font(R.font.medium)),
-            lineHeight = 24.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(500),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Title3_Semibold = TextStyle(
-            fontSize = 17.sp,
-            fontFamily = FontFamily(Font(R.font.semibold)),
-            lineHeight = 24.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(600),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Headline_Regular = TextStyle(
-            fontSize = 16.sp,
-            fontFamily = FontFamily(Font(R.font.regular)),
-            lineHeight = 20.sp,
-            letterSpacing = -0.32.sp,
-            fontWeight = FontWeight(400),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Headline_Medium = TextStyle(
-            fontSize = 16.sp,
-            fontFamily = FontFamily(Font(R.font.medium)),
-            lineHeight = 20.sp,
-            letterSpacing = -0.32.sp,
-            fontWeight = FontWeight(500),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Text_Regular = TextStyle(
-            fontSize = 15.sp,
-            fontFamily = FontFamily(Font(R.font.regular)),
-            lineHeight = 20.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(400),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Text_Medium = TextStyle(
-            fontSize = 15.sp,
-            fontFamily = FontFamily(Font(R.font.medium)),
-            lineHeight = 20.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(400),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Caption_Regular = TextStyle(
-            fontSize = 14.sp,
-            fontFamily = FontFamily(Font(R.font.regular)),
-            lineHeight = 20.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(400),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Caption_Semibold = TextStyle(
-            fontSize = 14.sp,
-            fontFamily = FontFamily(Font(R.font.semibold)),
-            lineHeight = 20.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(600),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
-        Caption2_Regular = TextStyle(
-            fontSize = 12.sp,
-            fontFamily = FontFamily(Font(R.font.regular)),
-            lineHeight = 16.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(400),
-           // color = MaterialTheme.colorScheme.tertiary
-        ),
-        Caption2_Bold = TextStyle(
-            fontSize = 12.sp,
-            fontFamily = FontFamily(Font(R.font.bold)),
-            lineHeight = 20.sp,
-            letterSpacing = 0.sp,
-            fontWeight = FontWeight(700),
-            //color = MaterialTheme.colorScheme.tertiary
-        ),
 
-
-
-
-
-
-
-
+    fun textStyle(
+        fontSize: Int,
+        fontWeight: Int,
+        lineHeight: Int,
+        letterSpacing: Double = 0.00,
+        fontFamily: Int = R.font.regular
+    ) = TextStyle(
+        fontSize = fontSize.sp,
+        fontWeight = FontWeight(weight = fontWeight),
+        lineHeight = lineHeight.sp,
+        letterSpacing = letterSpacing.sp,
+        fontFamily = FontFamily(Font(fontFamily))
     )
 
-
-
+    return Typo(
+        Title1_SemiBold = textStyle(24,600,
+            28, 0.33,R.font.semibold,
+        ),
+        Title1_ExtraBold = textStyle(24,800,
+            28,0.33,R.font.extrabold,
+        ),
+        Title2_Regular = textStyle(20,400,
+            28,0.38
+        ),
+        Title2_SemiBold = textStyle(20,600,
+             28, 0.38, R.font.semibold
+        ),
+        Title2_ExtraBold = textStyle(20, 800,
+            28, 0.38, R.font.extrabold
+        ),
+        Title3_Regular = textStyle(17, 400, 24
+        ),
+        Title3_Medium = textStyle(17, 500, 24,
+            fontFamily = R.font.medium
+        ),
+        Title3_Semibold = textStyle(17, 600, 24,
+            fontFamily = R.font.semibold
+        ),
+        Headline_Regular = textStyle( 16 , 400,  20,
+            -0.32
+        ),
+        Headline_Medium = textStyle(16, 500, 20,
+            -0.32, R.font.medium
+        ),
+        Text_Regular = textStyle(15, 400, 20
+        ),
+        Text_Medium = textStyle(15, 400, 20,
+            fontFamily = R.font.medium
+        ),
+        Caption_Regular = textStyle(14, 400, 20
+        ),
+        Caption_Semibold = textStyle(14, 600, 20,
+            fontFamily = R.font.semibold
+        ),
+        Caption2_Regular = textStyle(12, 400, 16
+        ),
+        Caption2_Bold = textStyle(12, 700, 20,
+            fontFamily = R.font.bold
+        )
+    )
 }
