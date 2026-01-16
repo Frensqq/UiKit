@@ -1,11 +1,15 @@
 package com.example.uikit.keyboard
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,37 +29,24 @@ import com.example.uikit.UI.Typography
 import com.example.uikit.UI.White
 
 @Composable
-fun circleButton(number: Int, onClick: (Int) -> Unit)
-{
-    var isPressed by remember { mutableStateOf(false) }
+fun circleButton(number: Int, onClick: (Int) -> Unit) {
+    val interaction = remember { MutableInteractionSource() }
+    val isPressed by interaction.collectIsPressedAsState()
 
     Box(
-        modifier = Modifier
+        Modifier
             .size(80.dp)
             .clip(CircleShape)
-            .background(
-                color = if (isPressed) Accent else InputBg
-            )
-            .pointerInput(Unit) {
-                detectTapGestures(
-                    onPress = {
-                        isPressed = true
-                        try {
-                            tryAwaitRelease()
-                            onClick(number)
-                        } finally {
-                            isPressed = false
-                        }
-                    }
-                )
-            },
-        contentAlignment = Alignment.Center
+            .background(if (isPressed) Accent else InputBg)
+            .clickable(
+                interactionSource = interaction,
+                indication = null,
+                onClick = { onClick(number) }
+            ),
+        Alignment.Center
     ) {
-        Text(
-            text = number.toString(),
-            style = Typography().Headline_Medium,
-            color = if (isPressed) White else Black
-        )
+        Text(text = number.toString(), style =  Typography().Headline_Medium,
+            color = if (isPressed) White else Black)
     }
 }
 

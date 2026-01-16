@@ -100,5 +100,4 @@ fun PreviewSelect(){
             value = Curr}
         )
     }
-
 }

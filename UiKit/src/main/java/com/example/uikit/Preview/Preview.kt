@@ -1,10 +1,7 @@
 package com.example.uikit.Preview
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
@@ -15,9 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.uikit.UI.Typography
 import com.example.uikit.UI.White
 import com.example.uikit.bubble.buttonBack
@@ -39,13 +34,9 @@ import com.example.uikit.controls.toggle
 import com.example.uikit.header.headerCart
 import com.example.uikit.header.headerCatalog
 import com.example.uikit.inputs.inputAndTitle
-import com.example.uikit.keyboard.ballonsAndKeyboard
-import com.example.uikit.keyboard.keyBoard
 import com.example.uikit.modal.modal
 import com.example.uikit.modal.snackBar
 import com.example.uikit.search.searchField
-import com.example.uikit.selects.genderSelect
-import com.example.uikit.selects.select
 
 @Composable
 fun preview(){
@@ -102,20 +93,12 @@ fun preview(){
 
         SpacerH(25)
         var value by remember { mutableStateOf("") }
-        Box(modifier = Modifier.fillMaxSize()) {
 
-            genderSelect(value,
-                { currentValue -> value = currentValue })
-        }
 
         SpacerH(25)
         var list = listOf<String>("Web", "Mobile","Desktop")
         var valueCat by remember { mutableStateOf("") }
-        Box(modifier = Modifier.fillMaxSize()) {
 
-            select(valueCat, "Категория",
-                list,{ currentValue -> valueCat = currentValue })
-        }
 
         SpacerH(25)
         searchField({}) {  }

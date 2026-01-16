@@ -26,7 +26,6 @@ import kotlin.collections.get
 
 @Composable
 fun projectCard(TextTitle: String, date: String, onClick: () ->Unit){
-    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     val CurrentDate =CurrentDateTime()
 
