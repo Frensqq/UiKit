@@ -17,6 +17,6 @@ fun inputAndTitleDate(title: String, placeholder: String, value:String, onchange
             color = Description
         )
         SpacerH(8)
-        Date(placeholder, value, onchange)
+        //Date(placeholder, value, onchange)
     }
 }
