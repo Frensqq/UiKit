@@ -1,5 +1,6 @@
 package com.example.uikit.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,11 +21,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.uikit.R
 import com.example.uikit.UI.Accent
+import com.example.uikit.UI.InputIcon
 import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
 
@@ -39,8 +44,8 @@ fun TabBar(
     onTabSelected: (String) -> Unit,
     tabs: List<TabItem> = defaultTabs()
 ) {
-    Box(Modifier.fillMaxWidth().height(88.dp)) {
-        Row(Modifier.fillMaxWidth().padding(horizontal = 7.dp, vertical = 8.dp),
+    Box(Modifier.fillMaxWidth().height(88.dp).background(Color.White).shadow(5.dp, spotColor = InputIcon,)) {
+        Row(Modifier.fillMaxSize().background(Color.White).padding(horizontal = 7.dp, vertical = 8.dp),
             Arrangement.SpaceBetween) {
             tabs.forEach { tab ->
                 TabItemView(tab, selectedTab == tab.title) { onTabSelected(tab.title) }
@@ -75,7 +80,7 @@ fun TabBarPreviewInteractive() {
     var selectedTab by remember { mutableStateOf("Главная") }
 
 
-    Column(Modifier.fillMaxSize()) {
+    Column(Modifier.fillMaxSize().background(Color.White)) {
             Spacer(Modifier.weight(1f))
         TabBar(
             selectedTab = selectedTab,
