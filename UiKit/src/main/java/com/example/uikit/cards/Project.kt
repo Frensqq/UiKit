@@ -20,89 +20,45 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 @Composable
-fun projectCard(TextTitle: String, date: String, onClick: () ->Unit){
+fun projectCard(title: String, date: String, onClick: () -> Unit) {
+    val formattedDate = formatProjectDate(date)
 
-    val CurrentDate =CurrentDateTime()
+    backgroundCards {
+        Column(Modifier.height(138.dp).padding(16.dp), Arrangement.SpaceBetween) {
+            Text(title, style = Typography().Headline_Medium, color = Black)
 
-
-    backgroundCards{
-
-        Column(
-            modifier = Modifier.height(138.dp).padding(16.dp),
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-
-            Text(TextTitle, style = Typography().Headline_Medium, color = Black)
-
-            Row(
-                Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom
-            ) {
-
-                val arrayDate = parsingByTime(date)
-
-                var TextData = "${CurrentDate[2].toString()}.${CurrentDate[1].toString()}.${CurrentDate[0].toString()}"
-
-                if((CurrentDate[0]==arrayDate[0]) and (CurrentDate[1]==arrayDate[1])
-                    and (CurrentDate[2]==arrayDate[2]) and (CurrentDate[3]==arrayDate[3])){
-                    TextData = "Недавний"
-                }
-                else if ((CurrentDate[0]==arrayDate[0]) and (CurrentDate[1]==arrayDate[1])
-                    and (CurrentDate[2]==arrayDate[2])){
-                    TextData = "Сегодня"
-                }
-                else if ((CurrentDate[0]==arrayDate[0]) and (CurrentDate[1]==arrayDate[1]))
-                    TextData = "Прошло ${CurrentDate[2]-arrayDate[2]} дня"
-
+            Row(Modifier.fillMaxWidth(), Arrangement.SpaceBetween, Alignment.Bottom) {
                 Text(
-                    "$TextData", modifier = Modifier.padding(bottom = 4.dp),
-                    style = Typography().Caption_Semibold, color = Placeholders
+                    formattedDate,
+                    modifier = Modifier.padding(bottom = 4.dp),
+                    style = Typography().Caption_Semibold,
+                    color = Placeholders
                 )
-
                 smallButton(true, "Открыть", onClick)
-
             }
-
-
         }
     }
 }
 
-fun parsingByTime(BuyTime: String): Array<Int>{
-    val dateString = BuyTime
-
+private fun formatProjectDate(dateString: String): String {
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS'Z'")
-    val dateTime = LocalDateTime.parse(dateString, formatter)
+    val date = LocalDateTime.parse(dateString, formatter)
+    val now = LocalDateTime.now()
 
-    val ArrayData: Array<Int> = arrayOf(
-        dateTime.year,
-        dateTime.monthValue,
-        dateTime.dayOfMonth,
-        dateTime.hour,
-        dateTime.minute,
-        dateTime.second
-    )
-
-    return ArrayData
-}
-
-fun CurrentDateTime(): Array<Int>{
-    val currentDateTime = LocalDateTime.now()
-    val ArrayData: Array<Int> = arrayOf(
-        currentDateTime.year,
-        currentDateTime.monthValue,
-        currentDateTime.dayOfMonth,
-        currentDateTime.hour,
-        currentDateTime.minute,
-        currentDateTime.second
-    )
-    return ArrayData
+    return when {
+        date.year == now.year && date.monthValue == now.monthValue &&
+                date.dayOfMonth == now.dayOfMonth && date.hour == now.hour -> "Недавний"
+        date.year == now.year && date.monthValue == now.monthValue &&
+                date.dayOfMonth == now.dayOfMonth -> "Сегодня"
+        date.year == now.year && date.monthValue == now.monthValue ->
+            "Прошло ${now.dayOfMonth - date.dayOfMonth} дня"
+        else -> "${date.dayOfMonth}.${date.monthValue}.${date.year}"
+    }
 }
 
 
 @Preview
 @Composable
 fun PreviewProject(){
-    projectCard("Мой первый проект", "2",{})
+    projectCard("Мой первый проект", "2024-12-01",{})
 }
