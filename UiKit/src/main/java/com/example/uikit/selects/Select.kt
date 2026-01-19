@@ -1,14 +1,10 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
-
 package com.example.uikit.selects
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -25,13 +21,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.uikit.R
-import com.example.uikit.UI.Black
-import com.example.uikit.UI.Description
-import com.example.uikit.UI.InputBg
-import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
 import com.example.uikit.UI.inputsColors
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Select(
     value: String,
@@ -39,31 +32,28 @@ fun Select(
     options: List<String>,
     onValueChange: (String) -> Unit,
 ) {
-    var expanded by remember { mutableStateOf(true) }
+    var expanded by remember { mutableStateOf(false) } // changed to false by default
 
     ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = it }) {
         TextField(
             value = value,
-            shape = RoundedCornerShape(10.dp),
             onValueChange = {},
             readOnly = true,
-            placeholder = { Text(placeholder, style = Typography().Headline_Regular,
-                color = Placeholders) },
-            trailingIcon = { Icon(painterResource(R.drawable.chevrondown), null,
-                tint = Description) },
+            placeholder = { Text(placeholder) },
+            trailingIcon = { Icon(painterResource(R.drawable.chevrondown), null) },
             colors = inputsColors(),
             modifier = Modifier
-                .border(1.dp, InputBg, RoundedCornerShape(10.dp))
                 .fillMaxWidth()
                 .height(50.dp)
                 .menuAnchor(),
+            shape = RoundedCornerShape(10.dp),
             textStyle = Typography().Headline_Regular
         )
 
         ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             options.forEach { option ->
                 DropdownMenuItem(
-                    text = { Text(option, style = Typography().Headline_Regular, color = Black) },
+                    text = { Text(option) },
                     onClick = { onValueChange(option); expanded = false }
                 )
             }

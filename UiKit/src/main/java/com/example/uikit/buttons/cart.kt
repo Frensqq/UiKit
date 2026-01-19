@@ -52,8 +52,6 @@ fun cartButton( cost:Int, onClick: () -> Unit){
                 color = White)
         }
     }
-
-
 }
 
 @Preview
