@@ -30,8 +30,7 @@ import com.example.uikit.components.SpacerH
 @Composable
 fun primaryCard(TitleName: String, typeText: String,cost:Int, state: Boolean, onClick: () -> Unit){
 
-    Box() {
-        backgroundCards()
+    backgroundCards{
 
         var text = if (state) "Добавить" else "Убрать"
 

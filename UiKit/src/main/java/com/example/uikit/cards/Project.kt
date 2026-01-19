@@ -29,8 +29,8 @@ fun projectCard(TextTitle: String, date: String, onClick: () ->Unit){
 
     val CurrentDate =CurrentDateTime()
 
-    Box() {
-        backgroundCards()
+
+    backgroundCards{
 
         Column(
             modifier = Modifier.height(138.dp).padding(16.dp),

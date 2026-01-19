@@ -31,13 +31,12 @@ import com.example.uikit.controls.counter
 @Composable
 fun cardCart(titleText: String, cost:Int, countStart:Int,
          onCountChange: (Int) -> Unit, onClickIcon: () -> Unit ){
-    Box() {
 
-    backgroundCards()
 
     var count by remember { mutableStateOf(countStart) }
 
 
+    backgroundCards{
 
         Column(
             modifier = Modifier.fillMaxWidth().height(138.dp),

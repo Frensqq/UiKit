@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.uikit.UI.InputIcon
 
 @Composable
-fun backgroundCards(){
+fun backgroundCards(content: @Composable () -> Unit){
 
     Box(
         Modifier.height(138.dp)
@@ -29,14 +29,8 @@ fun backgroundCards(){
                 color = Color.White,
                 shape = RoundedCornerShape(12.dp)
             )
-    )
-}
-
-@Preview
-@Composable
-fun PrewiewBackGORUNDCards(){
-
-    Box(modifier = Modifier.fillMaxSize().background(Color.White), contentAlignment = Alignment.Center) {
-        backgroundCards()
+    ){
+        content()
     }
+
 }
