@@ -1,5 +1,7 @@
 package com.example.uikit.UI
 
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 val Accent = Color(0xFF2074F2)
@@ -15,3 +17,18 @@ val Placeholders = Color(0xFF98989A)
 val Description = Color(0xFF8787A1)
 val CardStr = Color(0xFF8787A1)
 
+
+@Composable
+fun inputsColors() = TextFieldDefaults.colors(
+    disabledIndicatorColor = Color.Transparent,
+    focusedIndicatorColor = Color.Transparent,
+    errorIndicatorColor = Color.Transparent,
+    unfocusedIndicatorColor = Color.Transparent,
+    disabledTextColor = Black,
+    cursorColor = Accent,
+    focusedTextColor = Black,
+    focusedContainerColor = InputBg,
+    unfocusedTextColor = Black,
+    unfocusedContainerColor = InputBg,
+    disabledContainerColor = InputBg,
+)

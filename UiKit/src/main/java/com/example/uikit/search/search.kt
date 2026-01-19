@@ -10,7 +10,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,19 +18,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.uikit.R
-import com.example.uikit.UI.Accent
-import com.example.uikit.UI.Black
 import com.example.uikit.UI.Description
-import com.example.uikit.UI.InputBg
 import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
+import com.example.uikit.UI.inputsColors
 
 @Composable
 fun searchField(onSearch:(String)->Unit, onDone:() -> Unit){
@@ -50,19 +46,7 @@ fun searchField(onSearch:(String)->Unit, onDone:() -> Unit){
         modifier = Modifier.fillMaxWidth().height(48.dp)
             .clip(RoundedCornerShape(10.dp))
             .onFocusChanged{focusState -> isFocused = focusState.isFocused},
-        colors = TextFieldDefaults.colors(
-            disabledIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = Color.Transparent,
-            errorIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
-            disabledTextColor = Black,
-            cursorColor = Accent,
-            focusedTextColor = Black,
-            focusedContainerColor = InputBg,
-            unfocusedTextColor = Black,
-            unfocusedContainerColor = InputBg,
-            disabledContainerColor = InputBg,
-        ),
+        colors =  inputsColors(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(onDone = {
             onDone()
@@ -93,8 +77,6 @@ fun searchField(onSearch:(String)->Unit, onDone:() -> Unit){
         },
         textStyle = Typography().Text_Regular
     )
-
-
 }
 
 @Preview
