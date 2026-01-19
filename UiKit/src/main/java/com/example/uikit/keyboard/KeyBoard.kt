@@ -26,85 +26,46 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.uikit.R
 import com.example.uikit.UI.Black
+import com.example.uikit.UI.Description
 import com.example.uikit.UI.White
 import com.example.uikit.components.SpacerH
 import com.example.uikit.components.SpacerW
-
 @Composable
-fun keyBoard(onPin: (List<Int>) -> Unit = {}){
+fun keyBoard(onPin: (List<Int>) -> Unit = {}) {
+    var pin by remember { mutableStateOf(emptyList<Int>()) }
 
-    var digitNumber by remember { mutableStateOf(0) }
-    var pinArray by remember { mutableStateOf(mutableListOf<Int>()) }
-
-
-    Column(modifier = Modifier.padding(start = 43.dp, end = 44.dp).height(392.dp)) {
-
-            LazyVerticalStaggeredGrid(
-                columns = StaggeredGridCells.Fixed(3),
-                verticalItemSpacing = 24.dp,
-                horizontalArrangement = Arrangement.spacedBy(24.dp),
-
-            ) {
-                items(9) { index ->
-
-                    Box(modifier = Modifier.size(80.dp)) {
-
-                        circleButton(index + 1, { currentNumber ->
-
-                            if (digitNumber < 4) {
-                                pinArray.add(currentNumber)
-                                digitNumber += 1
-                                onPin(pinArray)
-
-                            } else {
-                                pinArray.clear()
-                                pinArray.add(currentNumber)
-                                digitNumber = 1
-                                onPin(pinArray)
-                            }
-                        })
-
-                    }
+    Column(Modifier.padding(horizontal = 43.dp).height(392.dp)) {
+        LazyVerticalStaggeredGrid(
+            columns = StaggeredGridCells.Fixed(3),
+            verticalItemSpacing = 24.dp,
+            horizontalArrangement = Arrangement.spacedBy(24.dp),
+        ) {
+            items(9) { i ->
+                circleButton(i + 1) {
+                    pin = if (pin.size < 4) pin + (i + 1) else listOf(i + 1)
+                    onPin(pin)
                 }
-
             }
-
+        }
 
         SpacerH(24)
 
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-
             SpacerW(80)
 
-            circleButton(0, {
-                    currentNumber ->
+            circleButton(0) {
+                pin = if (pin.size < 4) pin + 0 else listOf(0)
+                onPin(pin)
+            }
 
-                if (digitNumber< 4) {
-                    pinArray.add(currentNumber)
-                    digitNumber += 1
-                    onPin(pinArray)
-                }
-                else{
-                    pinArray.clear()
-                    pinArray.add(currentNumber)
-                    digitNumber = 1
-                    onPin(pinArray)
-                }
-            })
-
-            Box(modifier = Modifier.size(80.dp),
-                contentAlignment = Alignment.Center) {
-
+            Box(Modifier.size(80.dp), Alignment.Center) {
                 Icon(
                     painter = painterResource(R.drawable.del_icon),
                     contentDescription = null,
-                    tint = Black,
-                    modifier = Modifier.clickable{
-                        if (digitNumber>0 ) {
-                            pinArray.removeAt(pinArray.size - 1)
-                            digitNumber -= 1
-                            onPin(pinArray)
-                        }
+                    tint = if (pin.isNotEmpty()) Black else Description,
+                    modifier = Modifier.clickable(pin.isNotEmpty()) {
+                        pin = pin.dropLast(1)
+                        onPin(pin)
                     }
                 )
             }

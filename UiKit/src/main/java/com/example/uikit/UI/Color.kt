@@ -17,7 +17,6 @@ val Placeholders = Color(0xFF98989A)
 val Description = Color(0xFF8787A1)
 val CardStr = Color(0xFF8787A1)
 
-
 @Composable
 fun inputsColors() = TextFieldDefaults.colors(
     disabledIndicatorColor = Color.Transparent,
