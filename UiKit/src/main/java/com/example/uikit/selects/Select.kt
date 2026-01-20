@@ -32,7 +32,7 @@ fun Select(
     options: List<String>,
     onValueChange: (String) -> Unit,
 ) {
-    var expanded by remember { mutableStateOf(false) } // changed to false by default
+    var expanded by remember { mutableStateOf(false) }
 
     ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = it }) {
         TextField(
