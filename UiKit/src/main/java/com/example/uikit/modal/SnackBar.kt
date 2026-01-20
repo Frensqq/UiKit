@@ -48,7 +48,5 @@ fun PreviewsnackBar(){
 
         snackBar("Произошла ошибка\nНу вот опять", {count = false})
             Text("$count - колличество")
-
-
     }
 }
