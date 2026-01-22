@@ -41,7 +41,6 @@ fun categoryMenu(categories: List<String>,
 fun PreviewcategoryMenu(){
 
     val ListCateg: List<String> = listOf("Популярные","Женщинам","Мужчинам","Детям","Аксессуары")
-
     var currentCategory by remember { mutableStateOf(ListCateg[0]) }
 
     categoryMenu(ListCateg, currentCategory,

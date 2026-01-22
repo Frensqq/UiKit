@@ -27,8 +27,6 @@ import com.example.uikit.UI.Placeholders
 @Composable
 fun counter(count:Int, onCountChange: (Int) -> Unit){
 
-
-
     Box(modifier = Modifier.height(32.dp).width(64.dp)
         .clip(RoundedCornerShape(8.dp)).background(Color(0xFFf5f5f9))
     ) {
@@ -51,8 +49,6 @@ fun counter(count:Int, onCountChange: (Int) -> Unit){
             )
         }
     }
-
-
 }
 
 @Preview

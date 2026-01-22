@@ -78,12 +78,11 @@ private fun defaultTabs() = listOf(
 fun TabBarPreviewInteractive() {
     var selectedTab by remember { mutableStateOf("Главная") }
 
-
     Column(Modifier.fillMaxSize().background(Color.White)) {
             Spacer(Modifier.weight(1f))
         TabBar(
             selectedTab = selectedTab,
             onTabSelected = { tab -> selectedTab = tab }
         )
-        }
+    }
 }

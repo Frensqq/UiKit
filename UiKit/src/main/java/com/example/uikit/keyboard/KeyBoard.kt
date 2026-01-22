@@ -1,5 +1,6 @@
 package com.example.uikit.keyboard
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -40,8 +42,8 @@ fun keyBoard(onPin: (List<Int>) -> Unit = {}) {
         .height(392.dp)) {
         LazyVerticalStaggeredGrid(
             columns = StaggeredGridCells.FixedSize( 80.dp),
-            verticalItemSpacing = 24.dp, modifier =
-            Modifier.fillMaxWidth(),
+            verticalItemSpacing = 24.dp,
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             items(9) { i ->
@@ -65,7 +67,7 @@ fun keyBoard(onPin: (List<Int>) -> Unit = {}) {
                     Icon(
                         painter = painterResource(R.drawable.del_icon),
                         contentDescription = null,
-                        tint = if (pin.isNotEmpty()) Black else Description,
+                        tint = Black ,
                         modifier = Modifier.clickable(pin.isNotEmpty()) {
                             pin = pin.dropLast(1)
                             onPin(pin)
@@ -73,7 +75,6 @@ fun keyBoard(onPin: (List<Int>) -> Unit = {}) {
                     )
                 }
             }
-
     }
 }
 
@@ -84,7 +85,7 @@ fun PreviewkeyBoard(){
 
     var pinArray by remember { mutableStateOf(mutableListOf<Int>()) }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
         keyBoard({currentPinArray ->
             pinArray = currentPinArray.toMutableList()
         })
