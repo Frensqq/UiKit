@@ -1,5 +1,8 @@
 package com.example.uikit.UI
 
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -18,17 +21,31 @@ val Description = Color(0xFF8787A1)
 val CardStr = Color(0xFF8787A1)
 
 @Composable
-fun inputsColors() = TextFieldDefaults.colors(
-    disabledIndicatorColor = Color.Transparent,
-    focusedIndicatorColor = Color.Transparent,
-    errorIndicatorColor = Color.Transparent,
-    unfocusedIndicatorColor = Color.Transparent,
-    disabledTextColor = Black,
-    cursorColor = Accent,
+fun inputTextColors() = OutlinedTextFieldDefaults.colors(
     focusedTextColor = Black,
+    focusedBorderColor = Accent,
     focusedContainerColor = InputBg,
-    unfocusedTextColor = Black,
-    unfocusedContainerColor = InputBg,
+    focusedPlaceholderColor = Placeholders,
     disabledContainerColor = InputBg,
+    disabledTextColor = Black,
+    errorTextColor = Black,
+    errorBorderColor = Error,
+    errorContainerColor = Color(0x19fd3535) ,
+    errorCursorColor = Error,
+    cursorColor = Accent,
+    unfocusedTextColor = Black,
+    unfocusedBorderColor = InputStr,
+    unfocusedContainerColor = InputBg,
+    unfocusedPlaceholderColor = Placeholders ,
 )
+
+@Composable
+fun buttonColors() = ButtonColors(
+    contentColor = White,
+    containerColor = Accent,
+    disabledContentColor = White,
+    disabledContainerColor = AccentInactive
+)
+
+
 

@@ -26,14 +26,10 @@ fun chips(maxwidth:Int,minwidth:Int, text: String, state: Boolean, onClick: () -
         colors = if (state) ButtonDefaults.buttonColors(
             contentColor = White,
             containerColor = Accent,
-            disabledContainerColor = Accent,
-            disabledContentColor = White
         )
         else ButtonDefaults.buttonColors(
             contentColor = Description,
             containerColor = InputBg,
-            disabledContainerColor = InputBg,
-            disabledContentColor = Description
         ),
     ){
         Text(text = text, style = Typography().Text_Medium, color = if (state) White else Description)
@@ -43,5 +39,5 @@ fun chips(maxwidth:Int,minwidth:Int, text: String, state: Boolean, onClick: () -
 @Preview
 @Composable
 fun PreviewChips() {
-    chips(129,86,"Детям",true, {})
+    chips(129,86,"Детям",false, {})
 }

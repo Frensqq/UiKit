@@ -32,6 +32,7 @@ import com.example.uikit.UI.InputBg
 import com.example.uikit.UI.InputStr
 import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
+import com.example.uikit.UI.inputTextColors
 
 @Composable
 fun textInputField(value: String, TypePassword: Boolean, isError:Boolean, placeholderText: String, onValChange:(String)->Unit){
@@ -66,21 +67,7 @@ fun textInputField(value: String, TypePassword: Boolean, isError:Boolean, placeh
 
         visualTransformation = if (TypePassword and hidingPass) PasswordVisualTransformation() else VisualTransformation.None,
         keyboardOptions = if (TypePassword) KeyboardOptions(keyboardType = KeyboardType.Password) else KeyboardOptions(keyboardType = KeyboardType.Text),
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedTextColor = Black,
-            focusedBorderColor = Accent,
-            focusedContainerColor = InputBg,
-            focusedPlaceholderColor = Placeholders,
-            errorTextColor = Black,
-            errorBorderColor = Error,
-            errorContainerColor = Color(0x19fd3535) ,
-            errorCursorColor = Error,
-            cursorColor = Accent,
-            unfocusedTextColor = Black,
-            unfocusedBorderColor = InputStr,
-            unfocusedContainerColor = InputBg,
-            unfocusedPlaceholderColor = Placeholders
-        )
+        colors = inputTextColors()
         )
 }
 

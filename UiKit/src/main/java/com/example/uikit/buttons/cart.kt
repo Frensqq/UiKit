@@ -19,6 +19,7 @@ import com.example.uikit.R
 import com.example.uikit.UI.Accent
 import com.example.uikit.UI.Typography
 import com.example.uikit.UI.White
+import com.example.uikit.UI.buttonColors
 import com.example.uikit.components.SpacerW
 
 @Composable
@@ -28,10 +29,7 @@ fun cartButton( cost:Int, onClick: () -> Unit){
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier.fillMaxWidth()
             .height(56.dp),
-        colors = ButtonDefaults.buttonColors(
-            contentColor = White,
-            containerColor = Accent
-        )
+        colors = buttonColors()
     ) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Row() {

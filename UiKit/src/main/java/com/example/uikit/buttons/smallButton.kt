@@ -29,14 +29,10 @@ fun smallButton(State:Boolean, text: String, onClick: () -> Unit) {
         colors = if (State) ButtonDefaults.buttonColors(
             contentColor = White,
             containerColor = Accent,
-            disabledContainerColor = Accent,
-            disabledContentColor = White
             )
             else ButtonDefaults.buttonColors(
             contentColor = Accent,
             containerColor = White,
-            disabledContainerColor = White,
-            disabledContentColor = Accent
             ),
         contentPadding = PaddingValues(10.dp),
         border = BorderStroke(1.dp, Accent)

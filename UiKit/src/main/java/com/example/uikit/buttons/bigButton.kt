@@ -14,6 +14,7 @@ import com.example.uikit.UI.Accent
 import com.example.uikit.UI.AccentInactive
 import com.example.uikit.UI.Typography
 import com.example.uikit.UI.White
+import com.example.uikit.UI.buttonColors
 
 @Composable
 fun bigButton( text:String, enabled: Boolean, onClick: () -> Unit){
@@ -22,12 +23,7 @@ fun bigButton( text:String, enabled: Boolean, onClick: () -> Unit){
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier.fillMaxWidth().height(56.dp),
         enabled = enabled,
-        colors = ButtonColors(
-            contentColor = White,
-            containerColor = Accent,
-            disabledContentColor = White,
-            disabledContainerColor = AccentInactive
-        )
+        colors = buttonColors()
     ){
         Text(text = text,
             style = Typography().Title3_Semibold,

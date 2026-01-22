@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -27,6 +28,7 @@ import com.example.uikit.R
 import com.example.uikit.UI.Description
 import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
+import com.example.uikit.UI.inputTextColors
 import com.example.uikit.UI.inputsColors
 
 @Composable
@@ -35,17 +37,17 @@ fun searchField(onSearch:(String)->Unit, onDone:() -> Unit){
     var searchText by remember { mutableStateOf("") }
     var isFocused by remember { mutableStateOf(false) }
 
-    TextField(
+    OutlinedTextField(
         value = searchText,
         onValueChange = {
             searchText = it
             onSearch(it)
             onDone()
         },
+        shape = RoundedCornerShape(10.dp),
         modifier = Modifier.fillMaxWidth().height(48.dp)
-            .clip(RoundedCornerShape(10.dp))
             .onFocusChanged{focusState -> isFocused = focusState.isFocused},
-        colors =  inputsColors(),
+        colors = inputTextColors(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text,imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(onDone = {
             onDone()
