@@ -24,15 +24,12 @@ import com.example.uikit.UI.Typography
 import com.example.uikit.components.circleClose
 
 @Composable
-fun snackBar(text: String, circleClose: () -> Unit){
-
+fun snackBar( circleClose: () -> Unit, content: @Composable () -> Unit ){
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.TopEnd) {
-
         Column(modifier = Modifier.fillMaxWidth().heightIn(min = 130.dp).padding(10.dp)
             .clip(RoundedCornerShape(8.dp)).background(Color.White)
         ) {
-            Text(text, style = Typography().Title2_ExtraBold,
-                modifier = Modifier.padding(top = 24.dp, start = 20.dp))
+            content
         }
         circleClose(Accent,{circleClose()})
     }
@@ -41,11 +38,12 @@ fun snackBar(text: String, circleClose: () -> Unit){
 @Preview
 @Composable
 fun PreviewsnackBar(){
-
     var count by remember { mutableStateOf(true) }
-
     Column {
-        snackBar("Произошла ошибка\nНу вот опять", {count = false})
+        snackBar({count = false}, {
+            Text("Произошла ошибка\nНу вот опять", style = Typography().Title2_ExtraBold,
+                modifier = Modifier.padding(top = 24.dp, start = 20.dp))
+        })
             Text("$count - колличество")
     }
 }
