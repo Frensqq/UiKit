@@ -58,7 +58,6 @@ fun primaryCard(TitleName: String, typeText: String,cost:Int, state: Boolean, on
                     onClick()
                 })
             }
-
         }
     }
 }

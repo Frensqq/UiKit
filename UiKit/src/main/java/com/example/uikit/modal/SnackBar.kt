@@ -45,7 +45,6 @@ fun PreviewsnackBar(){
     var count by remember { mutableStateOf(true) }
 
     Column {
-
         snackBar("Произошла ошибка\nНу вот опять", {count = false})
             Text("$count - колличество")
     }

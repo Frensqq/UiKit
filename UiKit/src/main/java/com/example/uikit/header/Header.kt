@@ -24,14 +24,14 @@ import com.example.uikit.bubble.buttonBack
 import com.example.uikit.components.SpacerH
 
 @Composable
-fun headerCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
+fun headerCart(onClickTrash: () -> Unit, onClickButtonBack:() -> Unit){
 
     Column(modifier = Modifier.fillMaxWidth().height(84.dp)) {
 
         Row(modifier = Modifier.padding(end = 11.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
 
             buttonBack {
-                onClickbuttonBack()
+                onClickButtonBack()
             }
 
             Icon(
@@ -50,13 +50,10 @@ fun headerCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
 @Composable
 fun smallHeaderCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
 
-
-
         Row(modifier = Modifier.fillMaxWidth().height(48.dp).padding(start = 20.dp, end= 26.dp), horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.Top) {
 
             buttonBack {
-
                 onClickbuttonBack()
             }
 
@@ -68,10 +65,7 @@ fun smallHeaderCart(onClickTrash: () -> Unit, onClickbuttonBack:() -> Unit){
                 contentDescription = null, tint =Placeholders,
                 modifier = Modifier.padding(top = 6.dp).size(20.dp)
             )
-
         }
-
-
 }
 
 @Preview

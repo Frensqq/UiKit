@@ -17,9 +17,7 @@ fun categoryMenu(categories: List<String>,
                  selectedCategory:String? = categories[0],
                  onClickString:  (String) -> Unit,
                  onClick: () -> Unit
-
 ){
-
     LazyRow(
        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {

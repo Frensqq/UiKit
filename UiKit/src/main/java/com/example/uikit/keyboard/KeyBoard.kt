@@ -4,12 +4,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.material3.Icon
@@ -34,11 +36,13 @@ import com.example.uikit.components.SpacerW
 fun keyBoard(onPin: (List<Int>) -> Unit = {}) {
     var pin by remember { mutableStateOf(emptyList<Int>()) }
 
-    Column(Modifier.padding(horizontal = 43.dp).height(392.dp)) {
+    Column(Modifier.fillMaxWidth().padding(horizontal = 43.dp)
+        .height(392.dp)) {
         LazyVerticalStaggeredGrid(
-            columns = StaggeredGridCells.Fixed(3),
-            verticalItemSpacing = 24.dp,
-            horizontalArrangement = Arrangement.spacedBy(24.dp),
+            columns = StaggeredGridCells.FixedSize( 80.dp),
+            verticalItemSpacing = 24.dp, modifier =
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             items(9) { i ->
                 circleButton(i + 1) {
@@ -47,29 +51,29 @@ fun keyBoard(onPin: (List<Int>) -> Unit = {}) {
                 }
             }
         }
-
         SpacerH(24)
 
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            SpacerW(80)
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                SpacerW(80)
 
-            circleButton(0) {
-                pin = if (pin.size < 4) pin + 0 else listOf(0)
-                onPin(pin)
+                circleButton(0) {
+                    pin = if (pin.size < 4) pin + 0 else listOf(0)
+                    onPin(pin)
+                }
+
+                Box(Modifier.size(80.dp), Alignment.Center) {
+                    Icon(
+                        painter = painterResource(R.drawable.del_icon),
+                        contentDescription = null,
+                        tint = if (pin.isNotEmpty()) Black else Description,
+                        modifier = Modifier.clickable(pin.isNotEmpty()) {
+                            pin = pin.dropLast(1)
+                            onPin(pin)
+                        }
+                    )
+                }
             }
 
-            Box(Modifier.size(80.dp), Alignment.Center) {
-                Icon(
-                    painter = painterResource(R.drawable.del_icon),
-                    contentDescription = null,
-                    tint = if (pin.isNotEmpty()) Black else Description,
-                    modifier = Modifier.clickable(pin.isNotEmpty()) {
-                        pin = pin.dropLast(1)
-                        onPin(pin)
-                    }
-                )
-            }
-        }
     }
 }
 
@@ -81,9 +85,6 @@ fun PreviewkeyBoard(){
     var pinArray by remember { mutableStateOf(mutableListOf<Int>()) }
 
     Column(modifier = Modifier.fillMaxSize()) {
-
-
-
         keyBoard({currentPinArray ->
             pinArray = currentPinArray.toMutableList()
         })

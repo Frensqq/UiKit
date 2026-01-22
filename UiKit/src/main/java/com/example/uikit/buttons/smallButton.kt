@@ -46,7 +46,6 @@ fun smallButton(State:Boolean, text: String, onClick: () -> Unit) {
             color = if (State) White else Accent, maxLines = 1 )
         }
     }
-
 }
 
 @Preview

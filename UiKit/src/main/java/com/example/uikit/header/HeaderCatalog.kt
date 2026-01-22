@@ -26,7 +26,6 @@ fun headerCatalog(onSearchHeader:(String)->Unit,onDone:() -> Unit, onClickProfil
 
     var value by remember { mutableStateOf("") }
 
-
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically) {
 
@@ -34,7 +33,6 @@ fun headerCatalog(onSearchHeader:(String)->Unit,onDone:() -> Unit, onClickProfil
             searchField(
                 { currentValue ->
                     value = currentValue
-
                     onSearchHeader(value)
                 },
                 onDone
@@ -47,7 +45,6 @@ fun headerCatalog(onSearchHeader:(String)->Unit,onDone:() -> Unit, onClickProfil
             modifier = Modifier.size(32.dp).clickable{onClickProfile()},
             tint = Black
         )
-
     }
 }
 

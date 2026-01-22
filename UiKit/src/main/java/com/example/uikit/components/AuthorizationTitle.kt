@@ -22,7 +22,6 @@ import com.example.uikit.UI.Typography
 fun authorizationTitle(titleText: String, text: String){
 
     Column() {
-
         Row() {
             Image(
                 bitmap = ImageBitmap.imageResource(R.drawable.emojies),

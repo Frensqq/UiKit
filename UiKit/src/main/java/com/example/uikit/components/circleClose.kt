@@ -26,14 +26,11 @@ fun circleClose(colorBack: Color, onClick: () -> Unit){
         .clickable{onClick()},
         contentAlignment = Alignment.Center)
     {
-
         Icon(
             painter = painterResource(R.drawable.close),
             tint = Description, contentDescription = null
         )
-
     }
-
 }
 
 @Preview

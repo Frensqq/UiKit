@@ -40,7 +40,6 @@ fun searchField(onSearch:(String)->Unit, onDone:() -> Unit){
         onValueChange = {
             searchText = it
             onSearch(it)
-
             onDone()
         },
         modifier = Modifier.fillMaxWidth().height(48.dp)

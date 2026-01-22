@@ -31,9 +31,7 @@ import com.example.uikit.controls.counter
 fun cardCart(titleText: String, cost:Int, countStart:Int,
          onCountChange: (Int) -> Unit, onClickIcon: () -> Unit ){
 
-
     var count by remember { mutableStateOf(countStart) }
-
 
     backgroundCards{
 
@@ -42,7 +40,6 @@ fun cardCart(titleText: String, cost:Int, countStart:Int,
             verticalArrangement = Arrangement.SpaceBetween
         )
         {
-
             Row(
                 Modifier.fillMaxWidth().padding(16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -57,7 +54,6 @@ fun cardCart(titleText: String, cost:Int, countStart:Int,
                         onClickIcon()
                     },
                     tint = Description,
-
                 )
             }
 
@@ -84,12 +80,9 @@ fun cardCart(titleText: String, cost:Int, countStart:Int,
                         }
                     )
                 }
-
             }
-
         }
     }
-
 }
 
 @Preview

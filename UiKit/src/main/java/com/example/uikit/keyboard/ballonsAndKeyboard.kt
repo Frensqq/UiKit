@@ -27,11 +27,9 @@ fun ballonsAndKeyboard(onPin: (List<Int>) -> Unit = {}){
         LazyRow(modifier = Modifier.fillMaxWidth().height(16.dp),
             horizontalArrangement = Arrangement.Center)
         {items(4) {item ->
-
             Box(modifier = Modifier.padding(horizontal = 6.dp)) {
                 ballon(pinArray.size > item)
             }
-
         } }
 
         SpacerH(60)
