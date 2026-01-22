@@ -29,7 +29,7 @@ fun snackBar( circleClose: () -> Unit, content: @Composable () -> Unit ){
         Column(modifier = Modifier.fillMaxWidth().heightIn(min = 130.dp).padding(10.dp)
             .clip(RoundedCornerShape(8.dp)).background(Color.White)
         ) {
-            content
+            content()
         }
         circleClose(Accent,{circleClose()})
     }

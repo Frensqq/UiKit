@@ -26,15 +26,17 @@ import com.example.uikit.UI.Typography
 import com.example.uikit.UI.White
 
 @Composable
-fun circleButton(number: Int, onClick: (Int) -> Unit) {
+fun circleButton(number: Int, onClick: (Int) -> Unit, isPressedFromParent: Boolean = false) {
     val interaction = remember { MutableInteractionSource() }
     val isPressed by interaction.collectIsPressedAsState()
+
+    val currentPressedState = isPressedFromParent || isPressed
 
     Box(
         Modifier
             .size(80.dp)
             .clip(CircleShape)
-            .background(if (isPressed) Accent else InputBg)
+            .background(if (currentPressedState) Accent else InputBg)
             .clickable(
                 interactionSource = interaction,
                 indication = null,
@@ -43,7 +45,7 @@ fun circleButton(number: Int, onClick: (Int) -> Unit) {
         Alignment.Center
     ) {
         Text(text = number.toString(), style =  Typography().Headline_Medium,
-            color = if (isPressed) White else Black)
+            color = if (currentPressedState) White else Black)
     }
 }
 
