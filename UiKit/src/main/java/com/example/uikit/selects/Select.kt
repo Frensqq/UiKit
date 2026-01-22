@@ -11,7 +11,6 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import com.example.uikit.R
 import com.example.uikit.UI.Typography
 import com.example.uikit.UI.inputTextColors
-import com.example.uikit.UI.inputsColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

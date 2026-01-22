@@ -10,14 +10,12 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -29,8 +27,6 @@ import com.example.uikit.UI.Description
 import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.Typography
 import com.example.uikit.UI.inputTextColors
-import com.example.uikit.UI.inputsColors
-
 @Composable
 fun searchField(onSearch:(String)->Unit, onDone:() -> Unit){
 
