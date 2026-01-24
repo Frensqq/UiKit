@@ -22,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.uikit.R
+import com.example.uikit.UI.Placeholders
 import com.example.uikit.UI.inputTextColors
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -47,7 +48,8 @@ fun DateInput(
             Icon(
                 painterResource(R.drawable.chevrondown),
                 null,
-                Modifier.clickable { showDialog = true }
+                Modifier.clickable { showDialog = true },
+                tint = Placeholders
             )
         },
         modifier = modifier.fillMaxWidth(),
