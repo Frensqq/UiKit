@@ -32,14 +32,14 @@ fun Select(
     options: List<String>,
     onValueChange: (String) -> Unit,
 ) {
-    var expanded by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(true) }
 
     ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = it }) {
         OutlinedTextField(
             value = value,
             onValueChange = {},
             readOnly = true,
-            placeholder = { Text(placeholder) },
+            placeholder = { Text(placeholder, style = Typography().Headline_Regular) },
             trailingIcon = { Icon(painterResource(R.drawable.chevrondown), null) },
             colors = inputTextColors(),
             modifier = Modifier

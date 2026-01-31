@@ -4,8 +4,6 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-
-
 android {
     namespace = "com.example.uikit"
     compileSdk {
@@ -62,15 +60,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation("androidx.navigation:navigation-compose:2.8.7")
-
-
-    implementation("androidx.core:core-splashscreen:1.0.0")
-    implementation("io.coil-kt:coil-compose:2.7.0")
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation ("androidx.compose.material:material:1.8.1")
-    implementation("com.google.accompanist:accompanist-permissions:0.31.2-alpha")
-    implementation("com.google.android.gms:play-services-location:21.3.0")
-
-
 }
