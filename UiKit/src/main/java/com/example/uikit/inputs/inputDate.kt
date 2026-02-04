@@ -34,7 +34,6 @@ fun DateInput(
     value: String,
     placeholder: String,
     onDateSelected: (String) -> Unit,
-    modifier: Modifier = Modifier
 ) {
     var showDialog by remember { mutableStateOf(false) }
     val formatter = remember { SimpleDateFormat("yyyy-MM-dd", Locale.US) }
@@ -52,7 +51,7 @@ fun DateInput(
                 tint = Placeholders
             )
         },
-        modifier = modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         colors = inputTextColors()
     )
 

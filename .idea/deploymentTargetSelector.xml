@@ -5,7 +5,10 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewkeyBoard">
+      <SelectionState runConfigName="PreviewSelect">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="PreviewsnackBar">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
